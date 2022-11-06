@@ -1,0 +1,11 @@
+com\duing\entity\Film.class
+com\duing\dao\UserDao.class
+com\duing\controller\UserController.class
+com\duing\service\UserServiceImpl.class
+com\duing\controller\FilmController.class
+com\duing\vo\FilmVo.class
+com\duing\service\FilmService.class
+com\duing\entity\User.class
+com\duing\dao\FilmDao.class
+com\duing\service\FilmServiceImpl.class
+com\duing\service\UserService.class
