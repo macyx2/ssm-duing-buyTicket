@@ -18,7 +18,7 @@ public class FilmServiceImpl implements FilmService{
     @Override
     public List<FilmVo> selectAll() {
         List<Film> films = filmDao.getList();
-        System.out.println("数据库中影片数量" + films.size());
+        System.out.println("数据库中影片的数量" + films.size());
 
         List<FilmVo> result = new ArrayList<>();
         for (Film film : films){
