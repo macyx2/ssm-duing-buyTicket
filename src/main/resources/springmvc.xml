@@ -19,6 +19,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--springmvc注解驱动-->
+    <!--静态资源配置 读取权限-->
+    <mvc:resources mapping="/img/**" location="/img/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <!--<mvc:resources mapping="/js/**" location="/js/"/>-->
+
+
+    <!--声明springmvc注解驱动-->
     <mvc:annotation-driven/>
 </beans>
