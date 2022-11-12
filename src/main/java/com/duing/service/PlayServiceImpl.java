@@ -6,6 +6,7 @@ import com.duing.vo.PlayVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,12 @@ public class PlayServiceImpl implements PlayService{
             vo.setFilmName(play.getFilmName());
             vo.setRoomId(play.getRoomId());
             vo.setRoomName(play.getRoomName());
-            vo.setPlayTime(play.getPlayTime());
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            //从前端或者自己模拟一个日期格式，转为String即可
+            String dateStr = format.format(play.getPlayTime());
+
+            vo.setPlayTime(dateStr);
             vo.setPlayId(play.getPlayId());
             vo.setLanType(play.getLanType());
             vo.setPrice(play.getPrice());

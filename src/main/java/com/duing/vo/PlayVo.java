@@ -9,7 +9,7 @@ public class PlayVo {
 
     private String playId;
 
-    private Date playTime;
+    private String playTime;
 
     private String lanType;
 
@@ -39,11 +39,11 @@ public class PlayVo {
         this.playId = playId;
     }
 
-    public Date getPlayTime() {
+    public String getPlayTime() {
         return playTime;
     }
 
-    public void setPlayTime(Date playTime) {
+    public void setPlayTime(String playTime) {
         this.playTime = playTime;
     }
 
