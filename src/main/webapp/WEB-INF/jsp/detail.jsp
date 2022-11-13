@@ -22,7 +22,6 @@
         padding-bottom: 50px;
         margin-top: 20px;
     }
-
 </style>
 <body>
 <div class="container">

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duing.dao.PlayMapper">
+  <resultMap id="BaseResultMap" type="com.duing.entity.Play">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="play_id" jdbcType="VARCHAR" property="playId" />
+    <result column="play_time" jdbcType="TIMESTAMP" property="playTime" />
+    <result column="lan_type" jdbcType="VARCHAR" property="lanType" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="room_id" jdbcType="VARCHAR" property="roomId" />
+    <result column="room_name" jdbcType="VARCHAR" property="roomName" />
+    <result column="film_id" jdbcType="VARCHAR" property="filmId" />
+    <result column="film_name" jdbcType="VARCHAR" property="filmName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, play_id, play_time, lan_type, price, room_id, room_name, film_id, film_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from play
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from play
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.duing.entity.Play">
+    insert into play (id, play_id, play_time, 
+      lan_type, price, room_id, 
+      room_name, film_id, film_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{playId,jdbcType=VARCHAR}, #{playTime,jdbcType=DATE}, 
+      #{lanType,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{roomId,jdbcType=VARCHAR}, 
+      #{roomName,jdbcType=VARCHAR}, #{filmId,jdbcType=VARCHAR}, #{filmName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duing.entity.Play">
+    insert into play
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="playId != null">
+        play_id,
+      </if>
+      <if test="playTime != null">
+        play_time,
+      </if>
+      <if test="lanType != null">
+        lan_type,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="roomName != null">
+        room_name,
+      </if>
+      <if test="filmId != null">
+        film_id,
+      </if>
+      <if test="filmName != null">
+        film_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="playId != null">
+        #{playId,jdbcType=VARCHAR},
+      </if>
+      <if test="playTime != null">
+        #{playTime,jdbcType=DATE},
+      </if>
+      <if test="lanType != null">
+        #{lanType,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null">
+        #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="filmId != null">
+        #{filmId,jdbcType=VARCHAR},
+      </if>
+      <if test="filmName != null">
+        #{filmName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duing.entity.Play">
+    update play
+    <set>
+      <if test="playId != null">
+        play_id = #{playId,jdbcType=VARCHAR},
+      </if>
+      <if test="playTime != null">
+        play_time = #{playTime,jdbcType=DATE},
+      </if>
+      <if test="lanType != null">
+        lan_type = #{lanType,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null">
+        room_name = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="filmId != null">
+        film_id = #{filmId,jdbcType=VARCHAR},
+      </if>
+      <if test="filmName != null">
+        film_name = #{filmName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duing.entity.Play">
+    update play
+    set play_id = #{playId,jdbcType=VARCHAR},
+      play_time = #{playTime,jdbcType=DATE},
+      lan_type = #{lanType,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      room_id = #{roomId,jdbcType=VARCHAR},
+      room_name = #{roomName,jdbcType=VARCHAR},
+      film_id = #{filmId,jdbcType=VARCHAR},
+      film_name = #{filmName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+      select
+      play_id, play_time, lan_type, price, room_id, room_name, film_id, film_name
+      from play
+  </select>
+
+  <select id="selectByFilmId" resultMap="BaseResultMap">
+      select
+      play_id, play_time, lan_type, price, room_id, room_name, film_id, film_name from play
+      where film_id = #{filmId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByPlayId" resultMap="BaseResultMap">
+    select
+      play_id, play_time, lan_type, price, room_id, room_name, film_id, film_name from play
+    where play_id = #{playId,jdbcType=VARCHAR}
+  </select>
+</mapper>
